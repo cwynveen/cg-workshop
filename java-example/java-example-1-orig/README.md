@@ -31,7 +31,9 @@ Great, now lets build our web app:
 `docker build . -t java-maven-orig`
 
 Now that the app is built let's run it. what are each of these flags doing?
+
 -d: Runs the container in detached mode, meaning it runs in the background rather than in the foreground of your terminal.
+
 -p 8081:8080: Maps port 8080 on the container to port 8081 on the host machine. This means that if the application inside the container listens on port 8080, you can access it on your host machine via localhost:8081
 
 `docker run -d -p 8081:8080 java-maven-orig`
