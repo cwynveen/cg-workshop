@@ -11,7 +11,7 @@ public class DemoController {
     @GetMapping("/")
     public @ResponseBody ResponseEntity<String> root() {
         return ResponseEntity.status(HttpStatus.OK)
-                .body("Chainguard Workshop - Java Example 5 Chainguard Base Multi-Stage Build");
+                .body("Chainguard Workshop - Java Example 6 - Chainguard iamges we build LETS GO!");
     }
 
     @GetMapping("/hello")
