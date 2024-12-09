@@ -12,9 +12,6 @@ COPY pom.xml pom.xml
 # Run Maven to clean and package the project, generating the application JAR file in the target directory
 RUN mvn clean package
 
-# Dynamically retrieve the local Maven repository path and clean it up to reduce the image size
-RUN REPOSITORY=$(mvn help:evaluate -Dexpression=settings.localRepository -q -DforceStdout) && rm -rf ${REPOSITORY}
-
 # Change the working directory to /app for the final runtime setup
 WORKDIR /app
 
