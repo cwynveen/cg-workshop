@@ -2,6 +2,7 @@
 This repo will get you hands on with Chainguard images and multi-stage builds with a simple Java web-application example.
 
 # Overview of the examples we will explore in this lab
+## test
 * java-example-1-orig:
 Building a simple Java web-application using the Maven image from Docker Hub
 
