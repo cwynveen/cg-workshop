@@ -84,6 +84,9 @@ this environment variable is needed to run this program.
 [INFO] Scanning for projects...
 ```
 
+If we look at the documentation for the Chainguard Maven image, we can see that this image already accounts for these environment variables: [Chainguard Maven Specifications](https://images.chainguard.dev/directory/image/maven/specifications)
+
+
 Now lets try to build our web app again with these ENV variables specified:
 
 `docker build . -t java-cg-base-single`
