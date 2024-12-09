@@ -21,6 +21,13 @@ This example introduces the multi-stage build for our application. Both stages s
 In this final example, we build the two images that are needed in the multi-stage build locally and reference those in the Dockerfile to simplify things
 
 ## Getting started
+
+To follow along with this example you will need the following installed on your local machine:
+* Docker Desktop (or another docker compatible runtime - e.g., docker cli)
+* git
+* An IDE tool (e.g., VS Code)
+* Grype (or another container scanner tool that is used on the program)
+
 Clone this repo locally:
 
 `git clone https://github.com/cwynveen/cg-workshop.git`
