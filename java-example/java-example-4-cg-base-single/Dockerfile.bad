@@ -1,0 +1,18 @@
+# Use Chainguard base image for the build stage
+FROM cgr.dev/chainguard-private/chainguard-base AS builder
+
+# Set the working directory
+WORKDIR /work
+
+# Install Maven and dependencies using apk
+RUN apk add --no-cache maven-3.9 openjdk-21
+
+# Copy application source and Maven configuration
+COPY src/ src/
+COPY pom.xml pom.xml
+
+# Build the application with Maven
+RUN mvn clean package
+
+# Set the entrypoint to run the Java application
+ENTRYPOINT ["java", "-jar", "java-demo-app-1.0.0.jar"]
