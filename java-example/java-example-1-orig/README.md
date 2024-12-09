@@ -28,6 +28,8 @@ We can see that the image is 229.509 MB
 
 Great, now lets build our web app:
 
+Note: the . tells Docker to look at the current directory for a Dockerfile for it's instruction set to build the image. The -t flag specifies the name of the tag for the image we are building
+
 `docker build . -t java-maven-orig`
 
 Now that the app is built let's run it. what are each of these flags doing?
