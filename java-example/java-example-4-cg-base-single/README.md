@@ -52,11 +52,39 @@ We are also going to need openjdk, let's look at the versions available:
 
 `apk search openjdk`
 
-Now that we understand how to install apk's on top of chainguard-base, the Dockerfile in the example should make more sense. Note that the --no-cache flag in the Dockerfile makes sure that it only installs the package we want and doesn't leave behind all the other packages we don't need. 
+Let's install the version we want:
 
-Note that we also had to explicitly add openjdk to our PATH and specify the target where the application was built for it to run properly.
+`apk install openjdk-21`
+
+Now that we understand how to install apk's on top of chainguard-base, the Dockerfile in the example should make more sense. Let's not exit out of the wolfi-base/chaingurad-base interactive terminal just yet. 
+
+Note that the --no-cache flag in the Dockerfile makes sure that it only installs the package we want and doesn't leave behind all the other packages we don't need. 
 
 Now lets build our web app:
+
+`docker build . -f Dockerfile.bad -t java-cg-base-single`
+
+Oops! Something isn't quite working. Let's troubleshoot this by going back into the wolfi-base/chainguard-base image and see what's going on. Let's try to run the java and mvn commands
+```bash
+mvn
+The JAVA_HOME environment variable is not defined correctly,
+this environment variable is needed to run this program.
+8670836f80b7:/# java
+/bin/sh: java: not found
+8670836f80b7:/# ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+/bin/sh: ENV: not found
+8670836f80b7:/# JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+8670836f80b7:/# java
+/bin/sh: java: not found
+8670836f80b7:/# mvn
+The JAVA_HOME environment variable is not defined correctly,
+this environment variable is needed to run this program.
+8670836f80b7:/# PATH="$JAVA_HOME/bin:$PATH"
+8670836f80b7:/# mvn
+[INFO] Scanning for projects...
+```
+
+Now lets try to build our web app again with these ENV variables specified:
 
 `docker build . -t java-cg-base-single`
 
